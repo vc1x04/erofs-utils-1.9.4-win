@@ -1,0 +1,58 @@
+name: build-windows-x64
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Cygwin toolchain
+        shell: pwsh
+        run: |
+          $ProgressPreference = 'SilentlyContinue'
+          Invoke-WebRequest -Uri 'https://cygwin.com/setup-x86_64.exe' -OutFile setup-x86_64.exe
+          $pkgs = 'gcc-core,make,autoconf,automake,libtool,pkg-config,curl,tar,gzip,m4,perl'
+          Start-Process -FilePath '.\setup-x86_64.exe' -Wait -ArgumentList @(
+            '-q','-B','-R','C:\cygwin',
+            '-s','https://mirrors.kernel.org/sourceware/cygwin/',
+            '-P',$pkgs,
+            '--no-shortcuts','--no-startmenu','--no-desktop'
+          )
+          C:\cygwin\bin\bash.exe -lc 'gcc --version | head -1'
+
+      - name: Build
+        shell: pwsh
+        run: |
+          $u = (& C:\cygwin\bin\cygpath.exe -u $env:GITHUB_WORKSPACE).Trim()
+          & C:\cygwin\bin\bash.exe -lc "cd '$u' && bash scripts/build.sh"
+
+      - name: Package
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Copy-Item -Path C:\cygwin\tmp\pkg\* -Destination dist -Force
+          Get-ChildItem dist | Select-Object Name,Length
+          Compress-Archive -Path dist\* -DestinationPath erofs-utils-1.9.4-win-x64.zip -Force
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: erofs-utils-1.9.4-win-x64
+          path: erofs-utils-1.9.4-win-x64.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.9.4-cygwin-${{ github.run_number }}
+          name: erofs-utils 1.9.4 (Cygwin x64, build ${{ github.run_number }})
+          body: |
+            Upstream erofs-utils v1.9.4 built under Cygwin on windows-latest.
+            Contains fsck.erofs.exe and the cygwin1.dll it links against.
+          files: erofs-utils-1.9.4-win-x64.zip
