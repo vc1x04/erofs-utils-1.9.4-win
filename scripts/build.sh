@@ -1,6 +1,5 @@
 #!/bin/bash
-# Build erofs-utils v1.9.4 under Cygwin.
-# Produces fsck.erofs.exe (lz4 linked statically) plus cygwin1.dll in /tmp/pkg.
+# Build erofs-utils v1.9.4 under Cygwin (fsck.erofs, lz4 support).
 set -eu
 
 LZ4_VER=1.10.0
@@ -9,18 +8,18 @@ WORK=/tmp/b
 PKG=/tmp/pkg
 
 rm -rf "$WORK" "$PKG"
-mkdir -p "$WORK" "$PKG" /usr/local/lib /usr/local/include
+mkdir -p "$WORK" "$PKG" /usr/local/lib /usr/local/include /usr/local/lib/pkgconfig
 cd "$WORK"
 
-bash --version | head -1
 echo "--- lz4 $LZ4_VER ---"
 curl -fsSL -o lz4.tgz "https://codeload.github.com/lz4/lz4/tar.gz/refs/tags/v$LZ4_VER"
 tar xzf lz4.tgz
 cd "lz4-$LZ4_VER"
-make -C lib liblz4.a || make -C lib
-ls -l lib/liblz4.a
-cp lib/liblz4.a /usr/local/lib/
-cp lib/*.h /usr/local/include/
+make -C lib liblz4.a
+make -C lib install PREFIX=/usr/local
+ls -l /usr/local/lib/liblz4* /usr/local/lib/pkgconfig/ || true
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+pkg-config --modversion liblz4
 cd "$WORK"
 
 echo "--- erofs-utils $EROFS_VER ---"
@@ -28,7 +27,9 @@ curl -fsSL -o erofs.tgz "https://codeload.github.com/erofs/erofs-utils/tar.gz/re
 tar xzf erofs.tgz
 cd "erofs-utils-$EROFS_VER"
 ./autogen.sh
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 CPPFLAGS=-I/usr/local/include LDFLAGS=-L/usr/local/lib ./configure \
+  --disable-shared --enable-static \
   --disable-libselinux \
   --disable-lzma \
   --disable-fuse \
@@ -39,9 +40,23 @@ CPPFLAGS=-I/usr/local/include LDFLAGS=-L/usr/local/lib ./configure \
   --without-libcurl
 make -j"$(nproc)"
 
+echo "--- diagnose ---"
+ls -l fsck/
+ls -l fsck/.libs/ 2>/dev/null || true
+echo "== top-level binary =="
+./fsck/fsck.erofs --version || true
+echo "== .libs binary =="
+./fsck/.libs/fsck.erofs.exe --version || true
+
 echo "--- collect ---"
-./fsck/fsck.erofs --version
-cp fsck/fsck.erofs.exe "$PKG/"
+if [ -f fsck/.libs/fsck.erofs.exe ]; then
+  cp fsck/.libs/fsck.erofs.exe "$PKG/fsck.erofs.exe"
+else
+  cp fsck/fsck.erofs.exe "$PKG/fsck.erofs.exe"
+fi
 cp /usr/bin/cygwin1.dll "$PKG/"
-cp /usr/bin/cyglz4*.dll "$PKG/" 2>/dev/null || true
+for f in /usr/bin/cyglz4*.dll /usr/bin/cygerofs*.dll; do
+  [ -f "$f" ] && cp "$f" "$PKG/" || true
+done
 ls -l "$PKG"
+"$PKG/fsck.erofs.exe" --version || true
