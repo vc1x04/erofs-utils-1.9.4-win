@@ -1,7 +1,7 @@
 #!/bin/bash
 # Build erofs-utils v1.9.4 under Cygwin.
 # Produces fsck.erofs.exe (lz4 linked statically) plus cygwin1.dll in /tmp/pkg.
-set -euo pipefail
+set -euxo pipefail
 
 LZ4_VER=1.10.0
 EROFS_VER=1.9.4
@@ -16,7 +16,8 @@ echo "--- lz4 $LZ4_VER ---"
 curl -fsSL -o lz4.tgz "https://codeload.github.com/lz4/lz4/tar.gz/refs/tags/v$LZ4_VER"
 tar xzf lz4.tgz
 cd "lz4-$LZ4_VER"
-make -C lib liblz4.a
+make -C lib liblz4.a || make -C lib
+ls -l lib/liblz4.a
 cp lib/liblz4.a /usr/local/lib/
 cp lib/*.h /usr/local/include/
 cd "$WORK"

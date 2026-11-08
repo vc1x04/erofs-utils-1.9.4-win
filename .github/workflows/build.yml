@@ -32,7 +32,22 @@ jobs:
         shell: pwsh
         run: |
           $u = (& C:\cygwin\bin\cygpath.exe -u $env:GITHUB_WORKSPACE).Trim()
-          & C:\cygwin\bin\bash.exe -lc "cd '$u' && bash scripts/build.sh"
+          & C:\cygwin\bin\bash.exe -lc "cd '$u' && bash scripts/build.sh > build.log 2>&1"
+          $code = $LASTEXITCODE
+          New-Item -ItemType Directory -Force -Path ci | Out-Null
+          Get-Content build.log -Tail 500 | Set-Content -Path ci/build.log -Encoding utf8BOM
+          Get-Content build.log -Tail 120
+          if ($code -ne 0) { exit 1 }
+
+      - name: Commit CI log
+        if: always()
+        shell: pwwd
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ci/build.log
+          git commit -m 'ci log ${{ github.run_number }} [skip ci]'
+          if ($LASTEXITCODE -eq 0) { git push }
 
       - name: Package
         shell: pwsh
