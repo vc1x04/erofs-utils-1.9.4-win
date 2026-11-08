@@ -1,0 +1,2 @@
+﻿scripts/build.sh: line 4: set: pipefail
+: invalid option name
