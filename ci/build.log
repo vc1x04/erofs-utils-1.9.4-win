@@ -1,103 +1,202 @@
-﻿scripts/build.sh: line 4: set: -
-: invalid option
-set: usage: set [-abefhkmnptuvxBCEHPT] [-o option-name] [--] [-] [arg ...]
-scripts/build.sh: line 5: $'\r': command not found
-scripts/build.sh: line 10: $'\r': command not found
-scripts/build.sh: line 13: cd: $'/tmp/b\r\r': No such file or directory
-scripts/build.sh: line 14: $'\r': command not found
-head: invalid trailing option -- 
-Try 'head --help' for more information.
---- lz4 1.10.0
- ---
-curl: (3) URL rejected: Bad path
-tar (child): lz4.tgz\r: Cannot open: No such file or directory
-tar (child): Error is not recoverable: exiting now
-tar: Child returned status 2
-tar: Error is not recoverable: exiting now
-scripts/build.sh: line 19: cd: $'lz4-1.10.0\r\r': No such file or directory
-make: Entering directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
-make: *** lib: No such file or directory.  Stop.
-make: Leaving directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
-make: Entering directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
-make: *** lib
-: No such file or directory.  Stop.
-make: Leaving directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
-ls: cannot access 'lib/liblz4.a'$'\r': No such file or directory
-cp: cannot stat 'lib/liblz4.a': No such file or directory
-cp: cannot stat 'lib/*.h': No such file or directory
-scripts/build.sh: line 24: cd: $'/tmp/b\r\r': No such file or directory
-scripts/build.sh: line 25: $'\r': command not found
---- erofs-utils 1.9.4
- ---
-curl: (3) URL rejected: Bad path
-tar (child): erofs.tgz\r: Cannot open: No such file or directory
-tar (child): Error is not recoverable: exiting now
-tar: Child returned status 2
-tar: Error is not recoverable: exiting now
-scripts/build.sh: line 29: cd: $'erofs-utils-1.9.4\r\r': No such file or directory
-scripts/build.sh: line 30: ./autogen.sh
-: No such file or directory
-scripts/build.sh: line 31: ./configure: No such file or directory
-scripts/build.sh: line 32: --disable-libselinux: command not found
-scripts/build.sh: line 33: --disable-lzma: command not found
-scripts/build.sh: line 34: --disable-fuse: command not found
-scripts/build.sh: line 35: --without-zlib: command not found
-scripts/build.sh: line 36: --without-libzstd: command not found
-scripts/build.sh: line 37: --without-xxhash: command not found
-scripts/build.sh: line 38: $'--without-libcurl\r': command not found
-make: the '-j' option requires a positive integer argument
-Usage: make [options] [target] ...
-Options:
-  -b, -m                      Ignored for compatibility.
-  -B, --always-make           Unconditionally make all targets.
-  -C DIRECTORY, --directory=DIRECTORY
-                              Change to DIRECTORY before doing anything.
-  -d                          Print lots of debugging information.
-  --debug[=FLAGS]             Print various types of debugging information.
-  -e, --environment-overrides
-                              Environment variables override makefiles.
-  -E STRING, --eval=STRING    Evaluate STRING as a makefile statement.
-  -f FILE, --file=FILE, --makefile=FILE
-                              Read FILE as a makefile.
-  -h, --help                  Print this message and exit.
-  -i, --ignore-errors         Ignore errors from recipes.
-  -I DIRECTORY, --include-dir=DIRECTORY
-                              Search DIRECTORY for included makefiles.
-  -j [N], --jobs[=N]          Allow N jobs at once; infinite jobs with no arg.
-  --jobserver-style=STYLE     Select the style of jobserver to use.
-  -k, --keep-going            Keep going when some targets can't be made.
-  -l [N], --load-average[=N], --max-load[=N]
-                              Don't start multiple jobs unless load is below N.
-  -L, --check-symlink-times   Use the latest mtime between symlinks and target.
-  -n, --just-print, --dry-run, --recon
-                              Don't actually run any recipe; just print them.
-  -o FILE, --old-file=FILE, --assume-old=FILE
-                              Consider FILE to be very old and don't remake it.
-  -O[TYPE], --output-sync[=TYPE]
-                              Synchronize output of parallel jobs by TYPE.
-  -p, --print-data-base       Print make's internal database.
-  -q, --question              Run no recipe; exit status says if up to date.
-  -r, --no-builtin-rules      Disable the built-in implicit rules.
-  -R, --no-builtin-variables  Disable the built-in variable settings.
-  --shuffle[={SEED|random|reverse|none}]
-                              Perform shuffle of prerequisites and goals.
-  -s, --silent, --quiet       Don't echo recipes.
-  --no-silent                 Echo recipes (disable --silent mode).
-  -S, --no-keep-going, --stop
-                              Turns off -k.
-  -t, --touch                 Touch targets instead of remaking them.
-  --trace                     Print tracing information.
-  -v, --version               Print the version number of make and exit.
-  -w, --print-directory       Print the current directory.
-  --no-print-directory        Turn off -w, even if it was turned on implicitly.
-  -W FILE, --what-if=FILE, --new-file=FILE, --assume-new=FILE
-                              Consider FILE to be infinitely new.
-  --warn-undefined-variables  Warn when an undefined variable is referenced.
+﻿GNU bash, version 5.2.21(1)-release (x86_64-pc-cygwin)
+--- lz4 1.10.0 ---
+make: Entering directory '/tmp/b/lz4-1.10.0/lib'
+compiling static library
+make: Leaving directory '/tmp/b/lz4-1.10.0/lib'
+-rw-r--r-- 1 runneradmin None 265114 Nov  8 12:49 lib/liblz4.a
+--- erofs-utils 1.9.4 ---
+aclocal-1.19: warning: couldn't open directory 'm4': No such file or directory
+configure.ac:360: warning: The macro 'AC_TRY_LINK' is obsolete.
+configure.ac:360: You should run autoupdate.
+/mnt/share/cygpkgs/autoconf2.7/autoconf2.7.noarch/src/autoconf-2.73/lib/autoconf/general.m4:2976: AC_TRY_LINK is expanded from...
+/mnt/share/cygpkgs/autoconf2.7/autoconf2.7.noarch/src/autoconf-2.73/lib/m4sugar/m4sh.m4:696: AS_IF is expanded from...
+configure.ac:360: the top level
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:30: installing 'config/ar-lib'
+configure.ac:30: installing 'config/compile'
+configure.ac:15: installing 'config/config.guess'
+configure.ac:15: installing 'config/config.sub'
+configure.ac:27: installing 'config/install-sh'
+configure.ac:27: installing 'config/missing'
+contrib/Makefile.am: installing 'config/depcomp'
+configure: WARNING: unrecognized options: --disable-libselinux
+checking build system type... x86_64-pc-cygwin
+checking host system type... x86_64-pc-cygwin
+checking target system type... x86_64-pc-cygwin
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking whether UID '197108' is supported by ustar format... yes
+checking whether GID '197121' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.exe
+checking for suffix of executables... .exe
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C23 features... -std=gnu23
+checking whether gcc -std=gnu23 understands -c and -o together... yes
+checking dependency style of gcc -std=gnu23... gcc3
+checking for ar... ar
+checking the archiver (ar) interface... ar
+checking for gcc... (cached) gcc
+checking whether the compiler supports GNU C... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to enable C23 features... (cached) -std=gnu23
+checking whether gcc -std=gnu23 understands -c and -o together... (cached) yes
+checking dependency style of gcc -std=gnu23... (cached) gcc3
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc -std=gnu23... /usr/x86_64-pc-cygwin/bin/ld.exe
+checking if the linker (/usr/x86_64-pc-cygwin/bin/ld.exe) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 8192
+checking how to convert x86_64-pc-cygwin file names to x86_64-pc-cygwin format... func_convert_file_noop
+checking how to convert x86_64-pc-cygwin file names to toolchain format... func_convert_file_noop
+checking whether cygpath is installed... yes
+checking for /usr/x86_64-pc-cygwin/bin/ld.exe option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... file_magic ^x86 archive import|^x86 DLL
+checking for dlltool... dlltool
+checking how to associate runtime and link libraries... func_cygming_dll_for_implib
+checking for ranlib... ranlib
+checking for archiver @FILE support... @
+checking for strip... strip
+checking command to parse /usr/bin/nm -B output from gcc -std=gnu23 object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking which variant of shared library versioning to provide... (default) aix
+checking for objdir... .libs
+checking if gcc -std=gnu23 supports -fno-rtti -fno-exceptions... no
+checking for gcc -std=gnu23 option to produce PIC... -DDLL_EXPORT -DPIC
+checking if gcc -std=gnu23 PIC flag -DDLL_EXPORT -DPIC works... yes
+checking if gcc -std=gnu23 static flag -static works... yes
+checking if gcc -std=gnu23 supports -c -o file.o... yes
+checking if gcc -std=gnu23 supports -c -o file.o... (cached) yes
+checking whether the gcc -std=gnu23 linker (/usr/x86_64-pc-cygwin/bin/ld.exe) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... yes
+checking dynamic linker characteristics... Win32 ld.exe
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking pkg-config m4 macros... yes
+checking whether to enable multi-threading support... yes
+checking for dirent.h... yes
+checking for execinfo.h... no
+checking for endian.h... yes
+checking for fcntl.h... yes
+checking for getopt.h... yes
+checking for inttypes.h... (cached) yes
+checking for linux/aufs_type.h... no
+checking for linux/falloc.h... no
+checking for linux/fs.h... no
+checking for linux/loop.h... no
+checking for linux/types.h... no
+checking for linux/xattr.h... no
+checking for limits.h... yes
+checking for stddef.h... yes
+checking for stdint.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for sys/ioctl.h... yes
+checking for sys/mman.h... yes
+checking for sys/random.h... yes
+checking for sys/resource.h... yes
+checking for sys/sendfile.h... no
+checking for sys/stat.h... (cached) yes
+checking for sys/statfs.h... yes
+checking for sys/sysmacros.h... yes
+checking for sys/time.h... yes
+checking for sys/uio.h... yes
+checking for sys/xattr.h... yes
+checking for unistd.h... (cached) yes
+checking whether termios.h defines TIOCGWINSZ... yes
+checking for inline... inline
+checking for int64_t... yes
+checking for size_t... yes
+checking for ssize_t... yes
+checking for struct stat.st_rdev... yes
+checking for struct stat.st_atim... yes
+checking for struct stat.st_atimensec... no
+checking for uint64_t... yes
+checking for gcc -std=gnu23 options to detect undeclared functions... none needed
+checking for gcc -std=gnu23 options to ignore future-version functions... none needed
+checking whether memrchr is declared... yes
+checking for backtrace... no
+checking for copy_file_range... no
+checking for fallocate... yes
+checking for getrandom... yes
+checking for getrlimit... yes
+checking for gettid... no
+checking for gettimeofday... yes
+checking for lgetxattr... yes
+checking for llistxattr... yes
+checking for lsetxattr... yes
+checking for memset... yes
+checking for realpath... yes
+checking for pread64... no
+checking for pwrite64... no
+checking for pwritev... no
+checking for posix_fadvise... yes
+checking for fstatfs... yes
+checking for sendfile... no
+checking for strdup... yes
+checking for strerror... yes
+checking for strrchr... yes
+checking for strtoull... yes
+checking for sysconf... yes
+checking for utimensat... yes
+checking sysconf (_SC_PAGESIZE)... 65536
+checking for pthread.h... yes
+checking for pthread_mutex_lock in -lpthread... yes
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for uuid... no
+configure: error: Package requirements (uuid) were not met:
 
-This program built for x86_64-pc-cygwin
-Report bugs to <bug-make@gnu.org>
-scripts/build.sh: line 40: $'\r': command not found
---- collect ---
-scripts/build.sh: line 42: ./fsck/fsck.erofs: No such file or directory
-cp: cannot stat 'fsck/fsck.erofs.exe': No such file or directory
-ls: cannot access '/tmp/pkg'$'\r\r': No such file or directory
+Package 'uuid' not found
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables libuuid_CFLAGS
+and libuuid_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
