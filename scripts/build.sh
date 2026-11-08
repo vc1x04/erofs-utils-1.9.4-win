@@ -32,6 +32,7 @@ CPPFLAGS=-I/usr/local/include LDFLAGS=-L/usr/local/lib ./configure \
   --disable-libselinux \
   --disable-lzma \
   --disable-fuse \
+  --without-uuid \
   --without-zlib \
   --without-libzstd \
   --without-xxhash \
