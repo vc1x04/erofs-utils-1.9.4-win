@@ -41,7 +41,7 @@ jobs:
 
       - name: Commit CI log
         if: always()
-        shell: pwwd
+        shell: pwsh
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
