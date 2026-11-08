@@ -18,4 +18,5 @@ fsck.erofs --extract=<output-dir> <image>
 
 - Built from unmodified upstream sources; `lz4` is compiled from source and linked statically.
 - The binary is a Cygwin PE64 executable, so it is not a single-file standalone program.
+- The build log of the last run is kept at `ci/build.log` for troubleshooting.
 - No affiliation with the upstream project; provided as a convenience build.
