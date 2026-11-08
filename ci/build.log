@@ -1,2 +1,103 @@
-﻿scripts/build.sh: line 4: set: pipefail
-: invalid option name
+﻿scripts/build.sh: line 4: set: -
+: invalid option
+set: usage: set [-abefhkmnptuvxBCEHPT] [-o option-name] [--] [-] [arg ...]
+scripts/build.sh: line 5: $'\r': command not found
+scripts/build.sh: line 10: $'\r': command not found
+scripts/build.sh: line 13: cd: $'/tmp/b\r\r': No such file or directory
+scripts/build.sh: line 14: $'\r': command not found
+head: invalid trailing option -- 
+Try 'head --help' for more information.
+--- lz4 1.10.0
+ ---
+curl: (3) URL rejected: Bad path
+tar (child): lz4.tgz\r: Cannot open: No such file or directory
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+scripts/build.sh: line 19: cd: $'lz4-1.10.0\r\r': No such file or directory
+make: Entering directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
+make: *** lib: No such file or directory.  Stop.
+make: Leaving directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
+make: Entering directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
+make: *** lib
+: No such file or directory.  Stop.
+make: Leaving directory '/cygdrive/d/a/erofs-utils-1.9.4-win/erofs-utils-1.9.4-win'
+ls: cannot access 'lib/liblz4.a'$'\r': No such file or directory
+cp: cannot stat 'lib/liblz4.a': No such file or directory
+cp: cannot stat 'lib/*.h': No such file or directory
+scripts/build.sh: line 24: cd: $'/tmp/b\r\r': No such file or directory
+scripts/build.sh: line 25: $'\r': command not found
+--- erofs-utils 1.9.4
+ ---
+curl: (3) URL rejected: Bad path
+tar (child): erofs.tgz\r: Cannot open: No such file or directory
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+scripts/build.sh: line 29: cd: $'erofs-utils-1.9.4\r\r': No such file or directory
+scripts/build.sh: line 30: ./autogen.sh
+: No such file or directory
+scripts/build.sh: line 31: ./configure: No such file or directory
+scripts/build.sh: line 32: --disable-libselinux: command not found
+scripts/build.sh: line 33: --disable-lzma: command not found
+scripts/build.sh: line 34: --disable-fuse: command not found
+scripts/build.sh: line 35: --without-zlib: command not found
+scripts/build.sh: line 36: --without-libzstd: command not found
+scripts/build.sh: line 37: --without-xxhash: command not found
+scripts/build.sh: line 38: $'--without-libcurl\r': command not found
+make: the '-j' option requires a positive integer argument
+Usage: make [options] [target] ...
+Options:
+  -b, -m                      Ignored for compatibility.
+  -B, --always-make           Unconditionally make all targets.
+  -C DIRECTORY, --directory=DIRECTORY
+                              Change to DIRECTORY before doing anything.
+  -d                          Print lots of debugging information.
+  --debug[=FLAGS]             Print various types of debugging information.
+  -e, --environment-overrides
+                              Environment variables override makefiles.
+  -E STRING, --eval=STRING    Evaluate STRING as a makefile statement.
+  -f FILE, --file=FILE, --makefile=FILE
+                              Read FILE as a makefile.
+  -h, --help                  Print this message and exit.
+  -i, --ignore-errors         Ignore errors from recipes.
+  -I DIRECTORY, --include-dir=DIRECTORY
+                              Search DIRECTORY for included makefiles.
+  -j [N], --jobs[=N]          Allow N jobs at once; infinite jobs with no arg.
+  --jobserver-style=STYLE     Select the style of jobserver to use.
+  -k, --keep-going            Keep going when some targets can't be made.
+  -l [N], --load-average[=N], --max-load[=N]
+                              Don't start multiple jobs unless load is below N.
+  -L, --check-symlink-times   Use the latest mtime between symlinks and target.
+  -n, --just-print, --dry-run, --recon
+                              Don't actually run any recipe; just print them.
+  -o FILE, --old-file=FILE, --assume-old=FILE
+                              Consider FILE to be very old and don't remake it.
+  -O[TYPE], --output-sync[=TYPE]
+                              Synchronize output of parallel jobs by TYPE.
+  -p, --print-data-base       Print make's internal database.
+  -q, --question              Run no recipe; exit status says if up to date.
+  -r, --no-builtin-rules      Disable the built-in implicit rules.
+  -R, --no-builtin-variables  Disable the built-in variable settings.
+  --shuffle[={SEED|random|reverse|none}]
+                              Perform shuffle of prerequisites and goals.
+  -s, --silent, --quiet       Don't echo recipes.
+  --no-silent                 Echo recipes (disable --silent mode).
+  -S, --no-keep-going, --stop
+                              Turns off -k.
+  -t, --touch                 Touch targets instead of remaking them.
+  --trace                     Print tracing information.
+  -v, --version               Print the version number of make and exit.
+  -w, --print-directory       Print the current directory.
+  --no-print-directory        Turn off -w, even if it was turned on implicitly.
+  -W FILE, --what-if=FILE, --new-file=FILE, --assume-new=FILE
+                              Consider FILE to be infinitely new.
+  --warn-undefined-variables  Warn when an undefined variable is referenced.
+
+This program built for x86_64-pc-cygwin
+Report bugs to <bug-make@gnu.org>
+scripts/build.sh: line 40: $'\r': command not found
+--- collect ---
+scripts/build.sh: line 42: ./fsck/fsck.erofs: No such file or directory
+cp: cannot stat 'fsck/fsck.erofs.exe': No such file or directory
+ls: cannot access '/tmp/pkg'$'\r\r': No such file or directory
